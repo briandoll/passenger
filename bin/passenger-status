@@ -37,6 +37,11 @@ BLACK_BG = "\e[40m"
 BLUE_BG = "\e[44m"
 
 def show_status(control_process, options = {})
+	unless control_process
+		STDERR.puts "*** ERROR: No Passenger instance by that pid"
+		exit 2
+	end
+
 	case options[:show]
 	when 'pool'
 		begin
